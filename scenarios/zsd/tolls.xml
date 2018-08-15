@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE roadpricing SYSTEM "http://www.matsim.org/files/dtd/roadpricing_v1.dtd">
+
+ <roadpricing type="cordon" name="equil-net cordon-toll">
+
+        <description>A simple cordon toll scheme for the equil-network.</description>
+
+    <links>
+        <link id="400111351_0">
+            <cost start_time="00:00" end_time="25:00" amount="27.64" />
+        </link>
+        <link id="461676671_0">
+            <cost start_time="00:00" end_time="25:00" amount="24.33" />
+        </link>
+		<link id="397223752_0">
+            <cost start_time="00:00" end_time="25:00" amount="28.64" />
+        </link>
+		<link id="172999959_0">
+            <cost start_time="00:00" end_time="25:00" amount="31.39" />
+            </link>
+		<link id="-223194_0">
+            <cost start_time="00:00" end_time="25:00" amount="33.30" />
+            </link>
+		<link id="232207286_0">
+            <cost start_time="00:00" end_time="25:00" amount="36.06" />
+            </link>
+		<link id="-222950_0">
+            <cost start_time="00:00" end_time="25:00" amount="39.48" />
+            </link>
+		<link id="396293736_0">
+            <cost start_time="00:00" end_time="25:00" amount="46.53" />
+			</link>
+        <link id="46948905_0">
+            <cost start_time="00:00" end_time="25:00" amount="27.64" />
+            </link>
+		<link id="28935148_0">
+            <cost start_time="00:00" end_time="25:00" amount="25.99" />
+            </link>
+        <link id="80056729_0">
+            <cost start_time="00:00" end_time="25:00" amount="25.49" />
+            </link>
+		<link id="189271976_0">
+            <cost start_time="00:00" end_time="25:00" amount="28.36" />
+            </link>
+		<link id="130062824_1">
+            <cost start_time="00:00" end_time="25:00" amount="30.41" />
+            </link>
+		<link id="-223398_0">
+            <cost start_time="00:00" end_time="25:00" amount="32.66" />
+            </link>
+		<link id="-224794_0">
+            <cost start_time="00:00" end_time="25:00" amount="33.28" />
+            </link>
+		<link id="165031077_0">
+            <cost start_time="00:00" end_time="25:00" amount="39.05" />
+            </link>
+		<link id="146029084_0">
+            <cost start_time="00:00" end_time="25:00" amount="43.83" />
+        </link>
+
+<!-- for testing purposes
+
+        <link id="85639211_1">
+            <cost start_time="00:00" end_time="25:00" amount="2000.64" />
+        </link>
+        -->
+    </links>
+
+
+    <cost start_time="00:00" end_time="25:00" amount="0.00" />
+
+</roadpricing>
