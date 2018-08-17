@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes>
+    <vType id="pass" vClass="passenger" maxSpeed="40" speedFactor="0.9" speedDev="0.2" sigma="0" impatience="0.5"/>
+    
+    <vType id="trailer_class3" vClass="trailer" speedFactor="1" speedDev="0.333" maxSpeed="35" sigma="0" latAlignment="left"/>
+    <vType id="truck" vClass="truck" speedFactor="1" speedDev="0.333" maxSpeed="35" sigma="0"  latAlignment="left"/>
+    <vType id="trailer_class4" vClass="trailer" speedFactor="1" speedDev="0.333" maxSpeed="35" sigma="0"  latAlignment="left"/>
+    
+    <vType id="pass_trans" vClass="vip" maxSpeed="40" speedFactor="0.9" speedDev="0.2" sigma="0" impatience="0.5"/>
+    
+
+
+<!--<vType id="pass" speedFactor="1" speedDev="0.333" maxSpeed="35" sigma="0.5"  />
+    <vType id="truck" vClass="trailer" speedFactor="1" speedDev="0.333" maxSpeed="35" sigma="0.5"/>
+
+		  <flow id="pvpFlow" type="pass" begin="0" end="10000" vehsPerHour="800"
+			from="_q_start_.0" to="_q_ends_.414"/>
+        <flow id="pvpFlowtrailer3" type="trailer_class3" begin="0" end="10000" vehsPerHour="50"
+            from="_q_start_.0" to="_q_ends_.414"/>
+            <flow id="pvpFlowtrailer4" type="trailer_class4" begin="0" end="10000" vehsPerHour="50"
+            from="_q_start_.0" to="_q_ends_.414"/>
+            <flow id="pvpFlowtruck" type="truck" begin="0" end="10000" vehsPerHour="50"
+            from="_q_start_.0" to="_q_ends_.414"/>
+     -->
+		<!--<flow id="pvpFlow2" type="pass2" begin="0" end="3600" vehsPerHour="5000"
+			from="gneE10" to="gneE35"/>
+			<vType id="pass3" speedFactor="1" speedDev="0.333" maxSpeed="45" sigma="0.5"  />
+		<flow id="pvpFlow3" type="pass3" begin="0" end="3600" vehsPerHour="5000"
+			from="gneE10" to="gneE35"/>
+			<vType id="pass4" speedFactor="1" speedDev="0.333" maxSpeed="25" sigma="0.5"  />
+		<flow id="pvpFlow4" type="pass4" begin="0" end="3600" vehsPerHour="5000"
+			from="gneE10" to="gneE35"/>
+			<vType id="pass5" speedFactor="1" speedDev="0.333" maxSpeed="60" sigma="0.5"  />
+		<flow id="pvpFlow5" type="pass5" begin="0" end="3600" vehsPerHour="5000"
+			from="gneE10" to="gneE35"/>
+			<vType id="pass6" speedFactor="1.2" speedDev="0.533" maxSpeed="60" sigma="0.5" impatience="1"  />
+			<flow id="pvpFlow6" type="pass6" begin="0" end="3600" vehsPerHour="500"
+			from="gneE10" to="gneE35"/>-->
+</routes>
