@@ -4,7 +4,7 @@ import org.matsim.api.core.v01.events.*;
 import org.matsim.api.core.v01.events.handler.*;
 
 
-public class Handlers implements LinkEnterEventHandler {
+public class Handlers implements LinkEnterEventHandler, ActivityStartEventHandler {
 
     private AgentsStat agentsStat;
 
@@ -25,5 +25,10 @@ public class Handlers implements LinkEnterEventHandler {
         } else {
             agentsStat.removeFromTrip(event.getVehicleId());
         }
+    }
+
+    @Override
+    public void handleEvent(ActivityStartEvent event) {
+        agentsStat.removeFromTrip(event.getPersonId());
     }
 }
