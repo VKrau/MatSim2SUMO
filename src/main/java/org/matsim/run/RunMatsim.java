@@ -18,11 +18,6 @@
  * *********************************************************************** */
 package org.matsim.run;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.inject.Injector;
-import com.vividsolutions.jts.geom.MultiPolygon;
-import org.jvnet.jaxb2_commons.i18n.Reportable;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Person;
@@ -37,19 +32,12 @@ import org.matsim.core.controler.listener.IterationEndsListener;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.roadpricing.ControlerDefaultsWithRoadPricingModule;
 import org.matsim.roadpricing.RoadPricingConfigGroup;
-import org.opengis.referencing.FactoryException;
 import java.time.LocalDateTime;
 
-import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
-/**
- * @author nagel
- *
- */
 
 abstract public class RunMatsim {
 	/**CUSTOM VARIABLES*/
@@ -63,7 +51,7 @@ abstract public class RunMatsim {
 	public static String getOutputDirectory() { return config.controler().getOutputDirectory();}
 
 
-	public static void main(String[] args) throws IOException, FactoryException {
+	public static void main(String[] args) {
 
 		if ( args.length==0 || args[0]=="" ) {
 			config = ConfigUtils.loadConfig(fileConfig) ;
@@ -116,7 +104,8 @@ abstract public class RunMatsim {
 			public void notifyIterationEnds(IterationEndsEvent iterationEndsEvent) {
 			    System.out.println(agentsStat.getReportTable());
 				Integer iter = controler.getIterationNumber();
-				String output_file = String.format("%s/ITERS/it.%d/%d.routes.csv", RunMatsim.getOutputDirectory(), iter, iter);
+				//String output_file = String.format("%s/ITERS/it.%d/%d.routes.csv", RunMatsim.getOutputDirectory(), iter, iter);
+				String output_file = String.format("SUMO/data.routes.csv");
 				//Write data to csv. True = Append to file, false = Overwrite
 				WriteToCSV.run(agentsStat.getReportTable(), output_file, false);
 				agentsStat.clearBookAndReportTable();
@@ -125,18 +114,17 @@ abstract public class RunMatsim {
 		config.counts().setWriteCountsInterval(1);
 		//Start simulation
 		controler.run();
-
-
-
 	}
 
 	private static void drawPopulationSample(double populationSample, Population population, List<Id<Person>> personIdList2) {
 		List<Id<Person>> randomDraw = pickNRandom(personIdList2, personIdList2.size() * (1 - populationSample));
 		Iterator randomDrawIterator = randomDraw.iterator();
+		Integer i = 0;
 		while (randomDrawIterator.hasNext()) {
 			Id<Person> toRemoveId = (Id<Person>) randomDrawIterator.next();
-			log.println("Removing the person " + toRemoveId);
+			log.println(i+": Removing the person " + toRemoveId);
 			population.removePerson(toRemoveId);
+			i++;
 		}
 	}
 

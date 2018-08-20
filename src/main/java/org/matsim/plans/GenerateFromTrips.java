@@ -14,6 +14,9 @@ import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.geometry.CoordUtils;
 import org.matsim.core.utils.geometry.CoordinateTransformation;
 import org.matsim.core.utils.geometry.transformations.TransformationFactory;
+import org.matsim.run.ParserSHP;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.operation.TransformException;
 
 
 import java.io.*;
@@ -24,14 +27,18 @@ public class GenerateFromTrips {
     private static boolean glueTripsTogether = true;
     private static HashMap<Stop, Polygon> stopToCell;
     private static boolean generateShapeFileVoronoi = true;
+    private static boolean createAdditionalAgents = true;
+    private static String fileSHP = "input/inputForPlans/agent_distritcts/agent districts.shp";
+    private static Map<Integer, MultiPolygon> multiPolygonsMap;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FactoryException, TransformException {
         String inputCRS = "EPSG:4326"; // WGS84
         String outputCRS = "EPSG:32635";
         CoordinateTransformation ct = TransformationFactory.getCoordinateTransformation(inputCRS, outputCRS);
         String inputStations = "input/inputForPlans/tripsFromValidations/stops.csv";
-        String inputTrips = "input/inputForPlans/tripsFromValidations/TRIPS_test.csv";
+        String inputTrips = "input/inputForPlans/tripsFromValidations/TRIPS.csv";
+
         Map stopMap = new HashMap();
         List stopList = new ArrayList<Stop>();
 
@@ -44,9 +51,10 @@ public class GenerateFromTrips {
 
     }
 
-    private static void createPopulation(Map<String, Passenger> passengerMap, CoordinateTransformation ct, Map stopMap, List stopList) {
+    private static void createPopulation(Map<String, Passenger> passengerMap, CoordinateTransformation ct, Map stopMap, List stopList) throws FactoryException, TransformException {
         int personsWithEmptyPlans = 0;
         int personsWithLegsOnEnd = 0;
+        int removedPersonsWithAnomalyInLegNumber = 0;
         Scenario scenario = ScenarioUtils.createScenario(ConfigUtils.createConfig());
         Population population = scenario.getPopulation();
         PopulationFactory populationFactory = population.getFactory();
@@ -67,7 +75,7 @@ public class GenerateFromTrips {
                 if ( !(stopMap.get(trip.getStartStopId())== null)){
                     Stop startStop = (Stop) stopMap.get(trip.getStartStopId());
                     Coord transformedCoord = ct.transform(startStop.getCoord());
-                    Coord randomizedTransformedCoord = randomizeCoord(transformedCoord);
+                    Coord randomizedTransformedCoord = randomizeCoord(transformedCoord, startStop.modes);
                     String activityType;
                     boolean isLastActivity = false;
                     if (!tripIterator.hasNext()){
@@ -103,50 +111,97 @@ public class GenerateFromTrips {
 
                 }
 
+
+
                 if (((plan.getPlanElements().size() - 1) / 2) < tripIndex){
                     population.removePerson(person.getId());
-                    System.out.println("Removed person" + person.getId() + " with anomaly in leg number");
-                }
-
-
+                    removedPersonsWithAnomalyInLegNumber++;
             }
+
+
+
+
+        }
+        System.out.println("Removed " + removedPersonsWithAnomalyInLegNumber + " persons with anomaly in leg number");
         System.out.println("Removed persons with empty plans: " + personsWithEmptyPlans);
         System.out.println("Removed persons with legs on end: " + personsWithLegsOnEnd);
 
-        deleteFaultyPlans(population);
+        deleteOrFixFaultyPlans(population);
 
+        if (createAdditionalAgents){
+            ParserSHP parserSHP = new ParserSHP();
+            try {
+                multiPolygonsMap = parserSHP.run(fileSHP);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            /*
+            //GenerateInPolygons generateInPolygons = new GenerateInPolygons();
+            //generateInPolygons.cloneAgentsFromPolygons(scenario, 4000, multiPolygonsMap.get(3), new Coord(674991,6655560));
+            GenerateInPolygons generateInPolygons = new GenerateInPolygons();
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 2500, multiPolygonsMap.get(2));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 4000, multiPolygonsMap.get(3));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 4000, multiPolygonsMap.get(11), new Coord(666652, 6671643));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 3500, multiPolygonsMap.get(12), new Coord(676550, 6632331));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 4000, multiPolygonsMap.get(11), new Coord(665162, 6665387));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 6000, multiPolygonsMap.get(11), new Coord(684957, 6683798));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 3000, multiPolygonsMap.get(14), new Coord(684229, 6633293));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 7000, multiPolygonsMap.get(13), new Coord(678537, 6611645));
+            generateInPolygons.cloneAgentsFromPolygons(scenario, 2500, multiPolygonsMap.get(12), new Coord(667140,6640067));
+            */
+        }
+        deleteOrFixFaultyPlans(population);
         PopulationWriter populationWriter = new PopulationWriter(population);
-        populationWriter.writeV5("output/testPopulationCar.xml");
+        populationWriter.writeV5("output/metroRegionNewPopulationCar.xml");
     }
 
     private static void addHomeActivityAtEndStop(CoordinateTransformation ct, PopulationFactory populationFactory, Plan plan, Stop endStop) {
         Coord endStopCoord = endStop.getCoord();
         Coord transformedEndStopCoord = ct.transform(endStopCoord);
-        Coord randomizedTransformedEndStopCoord = randomizeCoord(transformedEndStopCoord);
+        Coord randomizedTransformedEndStopCoord = randomizeCoord(transformedEndStopCoord, endStop.modes);
         Activity lastActivity = populationFactory.
                 createActivityFromCoord("h", randomizedTransformedEndStopCoord);
         addLegToPlan(populationFactory, plan);
         plan.addActivity(lastActivity);
     }
 
-    private static void deleteFaultyPlans(Population population) {
+    private static void deleteOrFixFaultyPlans(Population population) {
         int removedFaultyPlans = 0;
+        int removedEmptyPlans = 0;
+        int fixedFaultyPlans = 0;
+        int removedPlansWithLegOnTheEnd = 0;
         for (Person person : new ArrayList<Person>(population.getPersons().values())){
             Plan plan = person.getPlans().get(0);
             if (plan.getPlanElements().isEmpty()) {
                 population.removePerson(person.getId());
-                removedFaultyPlans++;
-            } else {
-                PlanElement planElement = plan.getPlanElements().get(plan.getPlanElements().size() - 1);
-
-                if (planElement instanceof Leg) {
+                removedEmptyPlans++;
+            } else if ((plan.getPlanElements().get(plan.getPlanElements().size() - 1)) instanceof Leg){
                     population.removePerson(person.getId());
-                    removedFaultyPlans++;
+                removedPlansWithLegOnTheEnd++;
+                } else {
+                Iterator iterator = plan.getPlanElements().iterator();
+                while (iterator.hasNext()){
+                    PlanElement planElement = (PlanElement) iterator.next();
+                    if (planElement instanceof Activity){
+                        if (((Activity) planElement).getEndTime() < 0){
+                            population.removePerson(person.getId());
+                            removedFaultyPlans++;
+                        }
+                    }
                 }
 
+                Activity lastActivity = (Activity) plan.getPlanElements().get(plan.getPlanElements().size()- 1);
+                Double endTimeOfLAstActivity = lastActivity.getEndTime();
+                if (endTimeOfLAstActivity == null){
+                    lastActivity.setEndTime(25 * 3600);
+                    fixedFaultyPlans++;
+                }
             }
         }
+        System.out.println("removed " + removedEmptyPlans + " empty plans");
+        System.out.println("removed " + removedPlansWithLegOnTheEnd + " plans with leg on the end");
         System.out.println("removed " + removedFaultyPlans + " faulty plans");
+        System.out.println("fixed " + fixedFaultyPlans + " faulty plans");
     }
 
     private static void addLegToPlan(PopulationFactory populationFactory, Plan plan) {
@@ -186,9 +241,17 @@ public class GenerateFromTrips {
         return activityType;
     }
 
-    private static Coord randomizeCoord(Coord transformedCoord) {
-        double newX = transformedCoord.getX() + (( (Math.random() * (5 * 60 * (5 / 3.6)))));
-        double newY = transformedCoord.getY() + (( (Math.random() * (5 * 60 * (5 / 3.6)))));
+    private static Coord randomizeCoord(Coord transformedCoord, String stopMode) {
+
+        //Generates points in circles around the stops. Bigger circles for metro stations
+        double accessDistance;
+        if (stopMode.equals("metro")){
+            accessDistance = 22 * 60 * (5 / 3.6);
+        } else accessDistance = 7.5 * 60 * (5 / 3.6);
+        double phi = Math.random() * 2 * Math.PI;
+        double radius = accessDistance * Math.sqrt(Math.random());
+        double newX = transformedCoord.getX() + radius * Math.cos(phi);
+        double newY = transformedCoord.getY() + radius * Math.sin(phi);
         Coord coord = CoordUtils.createCoord(newX, newY);
         return coord;
     }
@@ -206,7 +269,7 @@ public class GenerateFromTrips {
                 String[] startTimeRaw = items[1].split(":");
                 int startHour = Integer.parseInt(startTimeRaw[0]);
                 int startMinute = Integer.parseInt(startTimeRaw[1]);
-                double startTime = startHour * 3600 + startMinute * 60 - (Math.random() * 10 * 60) - (5 + (Math.random() * 5 * 60));
+                double startTime = startHour * 3600 + startMinute * 60 - (Math.random() * 10 * 60) - (5 * 60 + (Math.random() * 5 * 60));
                 String startStopId = items[2];
                 String endStopId = items[4];
                 trip.setStartStopId(startStopId);
@@ -246,10 +309,10 @@ public class GenerateFromTrips {
                 for (int i = 0; i < passenger.tripList.size() - 2; i++){
                     Trip currentTrip = (Trip) passenger.tripList.get(i);
                     Trip nextTrip = (Trip) passenger.tripList.get(i+1);
-                    if (nextTrip.getStartTime() - currentTrip.getStartTime() < 20 * 60) {
+                    if (nextTrip.getStartTime() - currentTrip.getStartTime() < 25 * 60) {
                         passenger.tripList.remove(i + 1);
                         gluedTrips++;
-                        System.out.println("Trips glued together, because second of them starts less than 20 minutes after the first one");
+                        System.out.println("Trips glued together, because second of them starts less than 25 minutes after the first one");
                     }
                 }
             }

@@ -773,4 +773,535 @@
 		<volume h="15" val="2372" />
 		<volume h="21" val="2313" />
 	</count>
+	<count loc_id="28935138_0" cs_id="zaezd_len">
+		<volume h="8" val= "61" />
+		<volume h="9" val= "223" />
+		<volume h="10" val= "198" />
+		<volume h="11" val= "161" />
+		<volume h="12" val= "143" />
+		<volume h="13" val= "101" />
+		<volume h="14" val= "113" />
+		<volume h="15" val= "124" />
+		<volume h="16" val= "107" />
+		<volume h="17" val= "129" />
+		<volume h="18" val= "160" />
+		<volume h="19" val= "152" />
+		<volume h="20" val= "106" />
+		<volume h="21" val= "70" />
+		<volume h="22" val= "77" />
+		<volume h="23" val= "36" />
+		<volume h="24" val= "34" />
+	</count>
+	<count loc_id="28935141_0" cs_id="zaezd_avt">
+		<volume h="8" val= "282" />
+		<volume h="9" val= "494" />
+		<volume h="10" val= "380" />
+		<volume h="11" val= "280" />
+		<volume h="12" val= "238" />
+		<volume h="13" val= "179" />
+		<volume h="14" val= "194" />
+		<volume h="15" val= "181" />
+		<volume h="16" val= "174" />
+		<volume h="17" val= "168" />
+		<volume h="18" val= "255" />
+		<volume h="19" val= "242" />
+		<volume h="20" val= "180" />
+		<volume h="21" val= "134" />
+		<volume h="22" val= "126" />
+		<volume h="23" val= "73" />
+		<volume h="24" val= "45" />
+	</count>
+	<count loc_id="28935154_0" cs_id="zaezd_blago">
+		<volume h="8" val= "205" />
+		<volume h="9" val= "284" />
+		<volume h="10" val= "302" />
+		<volume h="11" val= "305" />
+		<volume h="12" val= "295" />
+		<volume h="13" val= "282" />
+		<volume h="14" val= "280" />
+		<volume h="15" val= "330" />
+		<volume h="16" val= "329" />
+		<volume h="17" val= "436" />
+		<volume h="18" val= "539" />
+		<volume h="19" val= "571" />
+		<volume h="20" val= "451" />
+		<volume h="21" val= "333" />
+		<volume h="22" val= "230" />
+		<volume h="23" val= "192" />
+		<volume h="24" val= "84" />
+	</count>
+	<count loc_id="184080439_0" cs_id="zaezd_ekat">
+		<volume h="8" val= "93" />
+		<volume h="9" val= "185" />
+		<volume h="10" val= "202" />
+		<volume h="11" val= "206" />
+		<volume h="12" val= "248" />
+		<volume h="13" val= "243" />
+		<volume h="14" val= "288" />
+		<volume h="15" val= "326" />
+		<volume h="16" val= "464" />
+		<volume h="17" val= "657" />
+		<volume h="18" val= "893" />
+		<volume h="19" val= "1060" />
+		<volume h="20" val= "598" />
+		<volume h="21" val= "347" />
+		<volume h="22" val= "212" />
+		<volume h="23" val= "109" />
+		<volume h="24" val= "68" />
+	</count>
+	<count loc_id="-223624_0" cs_id="zaezd_makar">
+		<volume h="8" val= "193" />
+		<volume h="9" val= "347" />
+		<volume h="10" val= "396" />
+		<volume h="11" val= "408" />
+		<volume h="12" val= "418" />
+		<volume h="13" val= "459" />
+		<volume h="14" val= "520" />
+		<volume h="15" val= "539" />
+		<volume h="16" val= "636" />
+		<volume h="17" val= "881" />
+		<volume h="18" val= "1217" />
+		<volume h="19" val= "1454" />
+		<volume h="20" val= "1154" />
+		<volume h="21" val= "798" />
+		<volume h="22" val= "605" />
+		<volume h="23" val= "382" />
+		<volume h="24" val= "188" />
+	</count>
+	<count loc_id="487152887_0" cs_id="zaezd_prim">
+		<volume h="8" val= "183" />
+		<volume h="9" val= "264" />
+		<volume h="10" val= "299" />
+		<volume h="11" val= "306" />
+		<volume h="12" val= "330" />
+		<volume h="13" val= "341" />
+		<volume h="14" val= "387" />
+		<volume h="15" val= "408" />
+		<volume h="16" val= "442" />
+		<volume h="17" val= "550" />
+		<volume h="18" val= "730" />
+		<volume h="19" val= "771" />
+		<volume h="20" val= "725" />
+		<volume h="21" val= "597" />
+		<volume h="22" val= "389" />
+		<volume h="23" val= "300" />
+		<volume h="24" val= "164" />
+	</count>
+	<count loc_id="-222804_0" cs_id="zaezd_bogat">
+		<volume h="8" val= "166" />
+		<volume h="9" val= "243" />
+		<volume h="10" val= "242" />
+		<volume h="11" val= "274" />
+		<volume h="12" val= "232" />
+		<volume h="13" val= "236" />
+		<volume h="14" val= "240" />
+		<volume h="15" val= "247" />
+		<volume h="16" val= "247" />
+		<volume h="17" val= "272" />
+		<volume h="18" val= "373" />
+		<volume h="19" val= "454" />
+		<volume h="20" val= "406" />
+		<volume h="21" val= "327" />
+		<volume h="22" val= "173" />
+		<volume h="23" val= "87" />
+		<volume h="24" val= "35" />
+	</count>
+	<count loc_id="-222822_0" cs_id="zaezd_bogat_2">
+		<volume h="8" val= "1616" />
+		<volume h="9" val= "2681" />
+		<volume h="10" val= "2204" />
+		<volume h="11" val= "1583" />
+		<volume h="12" val= "1329" />
+		<volume h="13" val= "1106" />
+		<volume h="14" val= "1032" />
+		<volume h="15" val= "937" />
+		<volume h="16" val= "893" />
+		<volume h="17" val= "950" />
+		<volume h="18" val= "1093" />
+		<volume h="19" val= "1230" />
+		<volume h="20" val= "952" />
+		<volume h="21" val= "777" />
+		<volume h="22" val= "583" />
+		<volume h="23" val= "381" />
+		<volume h="24" val= "260" />
+	</count>
+	<count loc_id="-223662_0" cs_id="zaezd_makar_2">
+		<volume h="8" val= "305" />
+		<volume h="9" val= "654" />
+		<volume h="10" val= "569" />
+		<volume h="11" val= "473" />
+		<volume h="12" val= "479" />
+		<volume h="13" val= "502" />
+		<volume h="14" val= "536" />
+		<volume h="15" val= "584" />
+		<volume h="16" val= "590" />
+		<volume h="17" val= "757" />
+		<volume h="18" val= "1021" />
+		<volume h="19" val= "1165" />
+		<volume h="20" val= "836" />
+		<volume h="21" val= "568" />
+		<volume h="22" val= "441" />
+		<volume h="23" val= "288" />
+		<volume h="24" val= "161" />
+	</count>
+	<count loc_id="435710012_0" cs_id="zaezd_ekat_2">
+		<volume h="8" val= "60" />
+		<volume h="9" val= "83" />
+		<volume h="10" val= "114" />
+		<volume h="11" val= "111" />
+		<volume h="12" val= "158" />
+		<volume h="13" val= "154" />
+		<volume h="14" val= "186" />
+		<volume h="15" val= "202" />
+		<volume h="16" val= "235" />
+		<volume h="17" val= "448" />
+		<volume h="18" val= "803" />
+		<volume h="19" val= "901" />
+		<volume h="20" val= "386" />
+		<volume h="21" val= "187" />
+		<volume h="22" val= "105" />
+		<volume h="23" val= "61" />
+		<volume h="24" val= "21" />
+	</count>
+	<count loc_id="123709509_0" cs_id="zaezd_blago_2">
+		<volume h="8" val= "75" />
+		<volume h="9" val= "132" />
+		<volume h="10" val= "133" />
+		<volume h="11" val= "148" />
+		<volume h="12" val= "150" />
+		<volume h="13" val= "166" />
+		<volume h="14" val= "220" />
+		<volume h="15" val= "216" />
+		<volume h="16" val= "285" />
+		<volume h="17" val= "334" />
+		<volume h="18" val= "499" />
+		<volume h="19" val= "514" />
+		<volume h="20" val= "466" />
+		<volume h="21" val= "302" />
+		<volume h="22" val= "201" />
+		<volume h="23" val= "155" />
+		<volume h="24" val= "83" />
+	</count>
+	<count loc_id="28935130_0" cs_id="zaezd_avt_2">
+		<volume h="8" val= "95" />
+		<volume h="9" val= "202" />
+		<volume h="10" val= "139" />
+		<volume h="11" val= "108" />
+		<volume h="12" val= "112" />
+		<volume h="13" val= "132" />
+		<volume h="14" val= "124" />
+		<volume h="15" val= "112" />
+		<volume h="16" val= "160" />
+		<volume h="17" val= "236" />
+		<volume h="18" val= "385" />
+		<volume h="19" val= "349" />
+		<volume h="20" val= "159" />
+		<volume h="21" val= "119" />
+		<volume h="22" val= "84" />
+		<volume h="23" val= "44" />
+		<volume h="24" val= "20" />
+	</count>
+	<count loc_id="28935139_0" cs_id="vyezd_avt">
+		<volume h="8" val= "326" />
+		<volume h="9" val= "613" />
+		<volume h="10" val= "417" />
+		<volume h="11" val= "266" />
+		<volume h="12" val= "207" />
+		<volume h="13" val= "167" />
+		<volume h="14" val= "140" />
+		<volume h="15" val= "179" />
+		<volume h="16" val= "159" />
+		<volume h="17" val= "205" />
+		<volume h="18" val= "357" />
+		<volume h="19" val= "412" />
+		<volume h="20" val= "261" />
+		<volume h="21" val= "164" />
+		<volume h="22" val= "110" />
+		<volume h="23" val= "80" />
+		<volume h="24" val= "31" />
+	</count>
+	<count loc_id="28935161_0" cs_id="vyezd_blago">
+		<volume h="8" val= "638" />
+		<volume h="9" val= "745" />
+		<volume h="10" val= "500" />
+		<volume h="11" val= "420" />
+		<volume h="12" val= "331" />
+		<volume h="13" val= "225" />
+		<volume h="14" val= "224" />
+		<volume h="15" val= "172" />
+		<volume h="16" val= "202" />
+		<volume h="17" val= "221" />
+		<volume h="18" val= "215" />
+		<volume h="19" val= "228" />
+		<volume h="20" val= "140" />
+		<volume h="21" val= "149" />
+		<volume h="22" val= "70" />
+		<volume h="23" val= "72" />
+		<volume h="24" val= "48" />
+	</count>
+	<count loc_id="119176957_0" cs_id="vyezd_ekat">
+		<volume h="8" val= "512" />
+		<volume h="9" val= "804" />
+		<volume h="10" val= "617" />
+		<volume h="11" val= "334" />
+		<volume h="12" val= "235" />
+		<volume h="13" val= "213" />
+		<volume h="14" val= "178" />
+		<volume h="15" val= "192" />
+		<volume h="16" val= "133" />
+		<volume h="17" val= "110" />
+		<volume h="18" val= "123" />
+		<volume h="19" val= "132" />
+		<volume h="20" val= "72" />
+		<volume h="21" val= "54" />
+		<volume h="22" val= "48" />
+		<volume h="23" val= "26" />
+		<volume h="24" val= "19" />
+	</count>
+	<count loc_id="351741897_1" cs_id="vyezd_makar">
+		<volume h="8" val= "597" />
+		<volume h="9" val= "1157" />
+		<volume h="10" val= "1088" />
+		<volume h="11" val= "787" />
+		<volume h="12" val= "653" />
+		<volume h="13" val= "571" />
+		<volume h="14" val= "537" />
+		<volume h="15" val= "545" />
+		<volume h="16" val= "538" />
+		<volume h="17" val= "575" />
+		<volume h="18" val= "702" />
+		<volume h="19" val= "795" />
+		<volume h="20" val= "577" />
+		<volume h="21" val= "387" />
+		<volume h="22" val= "287" />
+		<volume h="23" val= "253" />
+		<volume h="24" val= "146" />
+	</count>
+	<count loc_id="192140964_0" cs_id="vyezd_bogat">
+		<volume h="8" val= "566" />
+		<volume h="9" val= "1186" />
+		<volume h="10" val= "1184" />
+		<volume h="11" val= "990" />
+		<volume h="12" val= "999" />
+		<volume h="13" val= "976" />
+		<volume h="14" val= "1055" />
+		<volume h="15" val= "1111" />
+		<volume h="16" val= "1316" />
+		<volume h="17" val= "1782" />
+		<volume h="18" val= "2318" />
+		<volume h="19" val= "2612" />
+		<volume h="20" val= "1902" />
+		<volume h="21" val= "1403" />
+		<volume h="22" val= "1074" />
+		<volume h="23" val= "747" />
+		<volume h="24" val= "491" />
+	</count>
+	<count loc_id="396293743_0" cs_id="vyezd_kad">
+		<volume h="8" val= "201" />
+		<volume h="9" val= "320" />
+		<volume h="10" val= "251" />
+		<volume h="11" val= "237" />
+		<volume h="12" val= "184" />
+		<volume h="13" val= "153" />
+		<volume h="14" val= "149" />
+		<volume h="15" val= "136" />
+		<volume h="16" val= "161" />
+		<volume h="17" val= "199" />
+		<volume h="18" val= "214" />
+		<volume h="19" val= "200" />
+		<volume h="20" val= "208" />
+		<volume h="21" val= "191" />
+		<volume h="22" val= "189" />
+		<volume h="23" val= "175" />
+		<volume h="24" val= "99" />
+	</count>
+	<count loc_id="232850081_0" cs_id="vyezd_bogat_2">
+		<volume h="8" val= "185" />
+		<volume h="9" val= "301" />
+		<volume h="10" val= "320" />
+		<volume h="11" val= "264" />
+		<volume h="12" val= "190" />
+		<volume h="13" val= "234" />
+		<volume h="14" val= "197" />
+		<volume h="15" val= "193" />
+		<volume h="16" val= "182" />
+		<volume h="17" val= "237" />
+		<volume h="18" val= "342" />
+		<volume h="19" val= "363" />
+		<volume h="20" val= "321" />
+		<volume h="21" val= "282" />
+		<volume h="22" val= "283" />
+		<volume h="23" val= "204" />
+		<volume h="24" val= "121" />
+	</count>
+	<count loc_id="-223454_0" cs_id="vyezd_prim">
+		<volume h="8" val= "530" />
+		<volume h="9" val= "678" />
+		<volume h="10" val= "619" />
+		<volume h="11" val= "450" />
+		<volume h="12" val= "373" />
+		<volume h="13" val= "342" />
+		<volume h="14" val= "271" />
+		<volume h="15" val= "248" />
+		<volume h="16" val= "227" />
+		<volume h="17" val= "210" />
+		<volume h="18" val= "230" />
+		<volume h="19" val= "264" />
+		<volume h="20" val= "197" />
+		<volume h="21" val= "159" />
+		<volume h="22" val= "146" />
+		<volume h="23" val= "115" />
+		<volume h="24" val= "67" />
+	</count>
+	<count loc_id="-223574_0" cs_id="vyezd_makar_2">
+		<volume h="8" val= "676" />
+		<volume h="9" val= "1300" />
+		<volume h="10" val= "1208" />
+		<volume h="11" val= "922" />
+		<volume h="12" val= "647" />
+		<volume h="13" val= "477" />
+		<volume h="14" val= "430" />
+		<volume h="15" val= "399" />
+		<volume h="16" val= "398" />
+		<volume h="17" val= "389" />
+		<volume h="18" val= "447" />
+		<volume h="19" val= "463" />
+		<volume h="20" val= "436" />
+		<volume h="21" val= "384" />
+		<volume h="22" val= "288" />
+		<volume h="23" val= "247" />
+		<volume h="24" val= "181" />
+	</count>
+	<count loc_id="119176965_0" cs_id="vyezd_ekat_2">
+		<volume h="8" val= "506" />
+		<volume h="9" val= "940" />
+		<volume h="10" val= "811" />
+		<volume h="11" val= "510" />
+		<volume h="12" val= "391" />
+		<volume h="13" val= "340" />
+		<volume h="14" val= "336" />
+		<volume h="15" val= "233" />
+		<volume h="16" val= "239" />
+		<volume h="17" val= "234" />
+		<volume h="18" val= "222" />
+		<volume h="19" val= "285" />
+		<volume h="20" val= "182" />
+		<volume h="21" val= "129" />
+		<volume h="22" val= "90" />
+		<volume h="23" val= "76" />
+		<volume h="24" val= "44" />
+	</count>
+	<count loc_id="27463470_0" cs_id="vyezd_blago_2">
+		<volume h="8" val= "365" />
+		<volume h="9" val= "607" />
+		<volume h="10" val= "481" />
+		<volume h="11" val= "475" />
+		<volume h="12" val= "410" />
+		<volume h="13" val= "365" />
+		<volume h="14" val= "355" />
+		<volume h="15" val= "365" />
+		<volume h="16" val= "355" />
+		<volume h="17" val= "424" />
+		<volume h="18" val= "628" />
+		<volume h="19" val= "575" />
+		<volume h="20" val= "414" />
+		<volume h="21" val= "294" />
+		<volume h="22" val= "249" />
+		<volume h="23" val= "184" />
+		<volume h="24" val= "92" />
+	</count>
+	<count loc_id="28935146_0" cs_id="vyezd_krasn">
+		<volume h="8" val= "138" />
+		<volume h="9" val= "324" />
+		<volume h="10" val= "269" />
+		<volume h="11" val= "203" />
+		<volume h="12" val= "184" />
+		<volume h="13" val= "143" />
+		<volume h="14" val= "183" />
+		<volume h="15" val= "171" />
+		<volume h="16" val= "150" />
+		<volume h="17" val= "204" />
+		<volume h="18" val= "310" />
+		<volume h="19" val= "351" />
+		<volume h="20" val= "208" />
+		<volume h="21" val= "153" />
+		<volume h="22" val= "119" />
+		<volume h="23" val= "81" />
+		<volume h="24" val= "54" />
+	</count>
+	<count loc_id="28935145_0" cs_id="vyezd_avt_2">
+		<volume h="8" val= "105" />
+		<volume h="9" val= "127" />
+		<volume h="10" val= "174" />
+		<volume h="11" val= "155" />
+		<volume h="12" val= "140" />
+		<volume h="13" val= "165" />
+		<volume h="14" val= "151" />
+		<volume h="15" val= "171" />
+		<volume h="16" val= "197" />
+		<volume h="17" val= "237" />
+		<volume h="18" val= "440" />
+		<volume h="19" val= "484" />
+		<volume h="20" val= "314" />
+		<volume h="21" val= "227" />
+		<volume h="22" val= "152" />
+		<volume h="23" val= "118" />
+		<volume h="24" val= "58" />
+	</count>
+	<count loc_id="23973716_0" cs_id="v_sosnovo">
+		<volume h="9" val="1916" />
+		<volume h="10" val="1884" />
+		<volume h="19" val="3300" />
+		<volume h="20" val="3624" />
+	</count>
+	<count loc_id="127681911_0" cs_id="iz_sosnovo">
+		<volume h="9" val="2888" />
+		<volume h="10" val="2488" />
+		<volume h="19" val="2560" />
+		<volume h="20" val="2568" />
+	</count>
+	<count loc_id="335200530_0" cs_id="v_pulkovo">
+		<volume h="9" val="3408" />
+		<volume h="10" val="3576" />
+		<volume h="19" val="5776" />
+		<volume h="20" val="6232" />
+	</count>
+	<count loc_id="335200522_0" cs_id="iz_pulkovo">
+		<volume h="9" val="6260" />
+		<volume h="10" val="5956" />
+		<volume h="19" val="4652" />
+		<volume h="20" val="4180" />
+	</count>
+	<count loc_id="241258918_0" cs_id="v_airport">
+		<volume h="9" val="1328" />
+		<volume h="10" val="1308" />
+		<volume h="19" val="1040" />
+		<volume h="20" val="1610" />
+	</count>
+	<count loc_id="312266996_1" cs_id="iz_airport">
+		<volume h="9" val="1652" />
+		<volume h="10" val="1200" />
+		<volume h="19" val="1804" />
+		<volume h="20" val="1560" />
+	</count>
+	<count loc_id="200580507_2" cs_id="v_strelnu">
+		<volume h="9" val="1088" />
+		<volume h="10" val="792" />
+		<volume h="19" val="1460" />
+		<volume h="20" val="1344" />
+	</count>
+	<count loc_id="156286459_0" cs_id="iz_strelny">
+		<volume h="9" val="1188" />
+		<volume h="10" val="1052" />
+		<volume h="19" val="1060" />
+		<volume h="20" val="1392" />
+	</count>
+	<count loc_id="203345448_0" cs_id="v_sertolovo">
+		<volume h="9" val="608" />
+		<volume h="10" val="932" />
+	</count>
+	<count loc_id="234098790_1" cs_id="iz_sertolovo">
+		<volume h="9" val="1964" />
+		<volume h="10" val="1688" />
+	</count>
 </counts>

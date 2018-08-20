@@ -84,7 +84,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>org.matsim.gui.MATSimGUI</mainClass>
+							<mainClass>org.matsim.run.RunMatsim</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

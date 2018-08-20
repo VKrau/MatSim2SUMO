@@ -14,12 +14,14 @@ dist/
 downloads/
 eggs/
 .eggs/
+.idea/
 lib/
 lib64/
 parts/
 sdist/
 var/
 target/
+output/
 wheels/
 *.egg-info/
 .installed.cfg
