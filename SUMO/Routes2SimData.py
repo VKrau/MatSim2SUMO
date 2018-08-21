@@ -38,7 +38,9 @@ if __name__ == "__main__":
         required_time_intervals = [["morning",7,9],["evening",17,19]]
     print(required_time_intervals)
     df = pd.read_csv('data.routes.csv', header=None, sep=';')
+    if len(df.columns)<3:
+        sys.exit("Something went wrong, not enough columns in the file data.routes.csv!")
 
     for i in required_time_intervals:
         df_result = df.loc[(df[1] >= int(i[1])*3600) & (df[1] <= int(i[2])*3600)]
-        picklepacker(i[0], df_result, increase_in_agents)
+        #picklepacker(i[0], df_result, increase_in_agents)

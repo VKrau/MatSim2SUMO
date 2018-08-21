@@ -20,9 +20,9 @@ public class WriteToCSV {
                 for (Object col:table.columnKeySet()) {
                     if (table.get(row,col)!=null) {
                         writer.write(String.valueOf(row));
-                        writer.write(",");
+                        writer.write(";");
                         writer.write(String.valueOf(col));
-                        writer.write(",");
+                        writer.write(";");
                         writer.write(String.valueOf(table.get(row,col)));
                         writer.write("\r\n");
                     }
