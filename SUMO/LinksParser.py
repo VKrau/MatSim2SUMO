@@ -21,7 +21,6 @@ def all_links_of_network(file):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         Links = all_links_of_network(sys.argv[1])
-        print(Links)
         csv_writer(Links)
     else:
         print("You need to pass the name of the file with an argument!")

@@ -16,6 +16,7 @@ public class LinksReader {
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+            System.exit(-1);
         }
         return set;
     }
