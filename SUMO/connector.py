@@ -81,7 +81,10 @@ def run_simulation(network_file, simdata):
     print("--------------CHECKING THE NETWORK'S COMPLIANCE WITH ROUTES--------------")
     checking_network(data, network_file)
     print("--------------SIMULATION START--------------")
-    traci.start(sumoCmd)
+    try:
+        traci.start(sumoCmd)
+    except:
+        sys.exit("Error! Something is wrong with SUMO")
     while step < max_time:
         if step in data:
             adding_agents(data[step], step)
@@ -96,7 +99,4 @@ if __name__ == "__main__":
         try:
             run_simulation("mySUMOnetwork.net.xml", "morning.simdata")
         except:
-            print("You need to pass the name of the file with an argument!")
-
-
-    
+            print("You need to pass the name of the file with an argument!")    

@@ -26,6 +26,7 @@ def picklepacker(out_filename, df, agent_multiplier=0):
                 data[key_]["%s_%s" % (agent_id, num)] = route
     with open('%s.simdata' % out_filename, 'wb') as f:
         pickle.dump(data, f, protocol=2)
+    print("Well Done!")
 
 if __name__ == "__main__":
     increase_in_agents = 20
