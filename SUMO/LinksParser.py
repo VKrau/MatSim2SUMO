@@ -7,6 +7,7 @@ def csv_writer(data):
         writer = csv.writer(w_obj)
         for i in data:
             writer.writerow([i])
+        print("Well Done!")
 
 def all_links_of_network(file):
     SetSum = set()
