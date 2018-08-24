@@ -1,46 +1,87 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Aug 16 12:12:12 2018
+Created on Thu Aug 23 13:43:55 2018
+
 @author: VK
 """
 from __future__ import absolute_import
 from __future__ import print_function
 
-import pandas as pd
-import pickle
+import csv
 import random
-import sys
+import pickle
+import argparse
 
-def picklepacker(out_filename, df, agent_multiplier=0):
+#This generator creates a set of start times without repeating
+def start_time_generator (n, time, biasA=0, biasB=1000):
+    setStartTime = set()
+    while len(setStartTime) < n:
+        setStartTime.add(random.randint(time+biasA, time+biasB)) 
+    return list(setStartTime)
+
+def routes_reader(file_obj, StartTime, EndTime, agent_multiplier=0, biasA=0, biasB=1000):
     data = {}
-    for i in range(len(df)):
-        key = int(df.iloc[i][1])
-        route = [s.strip() for s in df.iloc[i][2][1:-1].split(',')]
-        agent_id = df.iloc[i][0]
-        generated_agent_time_list = [key]
-        generated_agent_time_list.extend([(random.randint(int(key), int(key)+600)) for i in range(agent_multiplier-1)])
-        for num, key_ in enumerate(generated_agent_time_list):
-            if key_ not in data:
-                data.setdefault(key_, {"%s_%s" % (agent_id, num): route})
-            else:
-                data[key_]["%s_%s" % (agent_id, num)] = route
+    reader = csv.reader(file_obj, delimiter=';')
+    b=0
+    for line in reader:
+        agent_id = line[0]
+        time = int(line[1])
+        route = [s.strip() for s in line[2][1:-1].split(',')]
+        if time>=StartTime and time<=EndTime:
+            generated_agent_time_list = [time]
+            #generated_agent_time_list.extend([(random.randint(int(time), int(time)+1200)) for i in range(agent_multiplier-1)])
+            generated_agent_time_list.extend(start_time_generator(agent_multiplier-1, time, biasA, biasB))
+            for num, key in enumerate(generated_agent_time_list):
+                while True:
+                    if key not in data:
+                        data.setdefault(key, {"%s_%s" % (agent_id, num): route})
+                        break
+                    else:
+                        if data[key].get("%s_%s" % (agent_id, num)):
+                            key = start_time_generator(1, key, 0, 1200)[0]
+                        else:
+                            data[key]["%s_%s" % (agent_id, num)] = route
+                            break
+                   
+            b += len(generated_agent_time_list)
+    print("Total number of generated agents: %s" % b)
+    k = 0
+    for i in data.itervalues():
+        k +=len(i)
+    print("Total number of recorded agents: %s" % k)
+    return data
+    
+def routes2simdata(out_filename, data):
     with open('%s.simdata' % out_filename, 'wb') as f:
         pickle.dump(data, f, protocol=2)
-    print("Well Done!")
+    print("Well Done! File: %s" % (out_filename+".simdata")) 
 
 if __name__ == "__main__":
-    increase_in_agents = 20
-    if len(sys.argv) > 1:
-        required_time_intervals = []
-        for i in sys.argv[1:]:
-            required_time_intervals.append(i[1:-1].split(','))
-    else:
-        required_time_intervals = [["morning",7,9],["evening",17,19]]
-    print(required_time_intervals)
-    df = pd.read_csv('data.routes.csv', header=None, sep=';')
-    if len(df.columns)<3:
-        sys.exit("Something went wrong, not enough columns in the file data.routes.csv!")
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--periods", required=True, 
+                        help="Setting the necessary periods (format: ['name1',time1,time2];['name2',time1,time2])\
+                        for their packaging in the simdata format.\
+                        For example: ['morning',7,9];['evening',17,19]", dest="periods")
+    parser.add_argument("--multiplier", required=False, default=1, type=int,
+                        help="Agent multiplier", dest="multiplier")
+    parser.add_argument("--biasA", required=False, default=0, type=int, 
+                        help="Offset of the lower limit of the start time (sec.)", dest="biasA")
+    parser.add_argument("--biasB", required=False, default=1000, type=int, 
+                        help="Offset of the upper limit of the start time (sec.)", dest="biasB")
+    parse = parser.parse_args().periods.split(";")
+    print("Ok, let's do it!")
+    print("You set %s period(s):" % len(parse))
+    required_time_intervals = []
+    for j,i in enumerate(parse):
+        print(j,": ", i, sep="")
+        required_time_intervals.append(i[1:-1].split(','))
+    increase_in_agents = parser.parse_args().multiplier
+    biasA = parser.parse_args().biasA
+    biasB = parser.parse_args().biasB
+    print("Multiplier: %s" % increase_in_agents)
+    print("Offset of the lower limit of the start time: %s seconds" % biasA)
+    print("Offset of the upper limit of the start time: %s seconds" % biasB)
     for i in required_time_intervals:
-        df_result = df.loc[(df[1] >= int(i[1])*3600) & (df[1] <= int(i[2])*3600)]
-        picklepacker(i[0], df_result, increase_in_agents)
+        with open("data.routes.csv") as f_obj:
+            dict_data = routes_reader(f_obj, int(i[1])*3600, int(i[2])*3600, increase_in_agents, biasA, biasB)
+        routes2simdata(i[0], dict_data)
