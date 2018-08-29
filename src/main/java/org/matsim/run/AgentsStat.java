@@ -1,4 +1,4 @@
-package org.matsim.run;
+package org.matsim.gui.run;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -25,13 +25,6 @@ public class AgentsStat {
     AgentsStat(Scenario scenario, HashSet<String> setOfMonitoringLinks) {
         this.scenario = scenario;
         this.setOfMonitoringLinks = setOfMonitoringLinks;
-
-        //Full remove agent from BookOfEvents
-        /**private void removeAgentFromBook(Id id){
-         for (String key:BookOfEvents.keySet()) {
-         BookOfEvents.get(key).remove(id);
-         }
-         }*/
     }
 
     public Table<String, Integer, ArrayList<String>> getReportTable() {
