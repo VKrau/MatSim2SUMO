@@ -1,4 +1,4 @@
-package org.matsim.gui.run;
+package org.matsim.run;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 import org.geotools.data.DataStore;
