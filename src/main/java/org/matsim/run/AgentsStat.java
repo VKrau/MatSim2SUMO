@@ -3,14 +3,12 @@ package org.matsim.run;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.matsim.api.core.v01.Id;
-import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.vehicles.Vehicle;
 
 import java.util.*;
 
 public class AgentsStat {
-    private Scenario scenario;
     private Table<String, Integer, ArrayList<String>> ReportTable = HashBasedTable.create();
     private Map<String, Integer> currentTrips = new HashMap<>();
     public HashSet<String> getSetOfMonitoringLinks() {
@@ -21,8 +19,7 @@ public class AgentsStat {
     private HashSet<String> setOfMonitoringLinks;
 
     //Class constructor
-    AgentsStat(Scenario scenario, HashSet<String> setOfMonitoringLinks) {
-        this.scenario = scenario;
+    AgentsStat(HashSet<String> setOfMonitoringLinks) {
         this.setOfMonitoringLinks = setOfMonitoringLinks;
     }
 

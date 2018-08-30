@@ -23,15 +23,12 @@ import org.matsim.core.api.experimental.events.EventsManager;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.events.EventsUtils;
 import org.matsim.core.events.MatsimEventsReader;
-import java.time.LocalDateTime;
-
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 abstract public class RunMatsim {
 	/**CUSTOM VARIABLES*/
-	private static String network_name = "network_spb_zsd_before";
-	private static String inputEventFile;
+	//private static String network_name = "network_spb_zsd_newcapasity_after_5.xml";
+	private static String inputEventFile = "output_events.xml.gz";
 	/**----------------*/
 
 	private static Scenario scenario;
@@ -42,17 +39,15 @@ abstract public class RunMatsim {
 
 		if (args.length == 0 || args[0] == "") {
 			//path to events file
-			config.network().setInputFile(String.format("scenarios/zsd/%s.xml", network_name));
-			inputEventFile = "scenarios/zsd/output_events.xml.gz";
+			//config.network().setInputFile(String.format("scenarios/zsd/%s.", network_name));
+			inputEventFile = String.format("scenarios/zsd/%s", inputEventFile);
 		} else {
-			config.network().setInputFile(args[0]);
-			inputEventFile = args[1];
+			//config.network().setInputFile(args[0]);
+			inputEventFile = args[0];
 		}
 
-		config.controler().setOutputDirectory(config.controler().getOutputDirectory() + "_" + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME).toString().split(":")[0]);
-
 		HashSet<String> setOfMonitoringLinks = LinksReader.read("Links.csv");
-		AgentsStat agentsStat = new AgentsStat(scenario, setOfMonitoringLinks);
+		AgentsStat agentsStat = new AgentsStat(setOfMonitoringLinks);
 
 		//Create an instance of the HandlersCollection
 		final Handlers my_handlers = new Handlers(agentsStat);
