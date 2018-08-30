@@ -1,10 +1,12 @@
 package org.matsim.run;
 
+import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.events.*;
 import org.matsim.api.core.v01.events.handler.*;
+import org.matsim.vehicles.Vehicle;
 
 
-public class Handlers implements LinkEnterEventHandler, ActivityStartEventHandler {
+public class Handlers implements LinkEnterEventHandler, PersonDepartureEventHandler, PersonArrivalEventHandler{
 
     private AgentsStat agentsStat;
 
@@ -15,20 +17,18 @@ public class Handlers implements LinkEnterEventHandler, ActivityStartEventHandle
 
     @Override
     public void handleEvent(LinkEnterEvent event) {
-        if (agentsStat.getSetOfMonitoringLinks().contains(String.valueOf(event.getLinkId()))) {
-            if (!agentsStat.getCurrentTrips().containsKey(String.valueOf(event.getVehicleId()))) {
-                agentsStat.recordToReportTable(event.getVehicleId(), event.getTime(), event.getLinkId());
-                agentsStat.addTrip(event.getVehicleId(), (int) Math.round(event.getTime()));
-            } else {
-                agentsStat.recordToReportTable(event.getVehicleId(), event.getLinkId());
-            }
-        } else {
-            agentsStat.removeFromTrip(event.getVehicleId());
-        }
+        agentsStat.addLinkToRoute(event.getLinkId(), event.getVehicleId(), event.getTime());
     }
 
     @Override
-    public void handleEvent(ActivityStartEvent event) {
+    public void handleEvent(PersonArrivalEvent event) {
         agentsStat.removeFromTrip(event.getPersonId());
+    }
+
+    @Override
+    public void handleEvent(PersonDepartureEvent event) {
+        // Unfortunately necessary since vehicle departures are not uniformly registered
+        Id<Vehicle> vehId = Id.create(event.getPersonId(), Vehicle.class);
+        agentsStat.addLinkToRoute(event.getLinkId(), vehId, event.getTime());
     }
 }

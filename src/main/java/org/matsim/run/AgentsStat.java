@@ -44,6 +44,19 @@ public class AgentsStat {
         }
     }
 
+    public void addLinkToRoute(Id<Link> linkId, Id<Vehicle> vehicleId, double time) {
+        if (getSetOfMonitoringLinks().contains(String.valueOf(linkId))) {
+            if (!getCurrentTrips().containsKey(String.valueOf(vehicleId))) {
+                recordToReportTable(vehicleId, time, linkId);
+                addTrip(vehicleId, (int) Math.round(time));
+            } else {
+                recordToReportTable(vehicleId, linkId);
+            }
+        } else {
+            removeFromTrip(vehicleId);
+        }
+    }
+
     public void clearBookAndReportTable(){
         ReportTable.clear();
         currentTrips.clear();
