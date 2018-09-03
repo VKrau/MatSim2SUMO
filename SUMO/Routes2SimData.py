@@ -38,7 +38,7 @@ def routes_reader(file_obj, StartTime, EndTime, agent_multiplier=0, biasA=0, bia
                         break
                     else:
                         if data[key].get("%s_%s" % (agent_id, num)):
-                            key = start_time_generator(1, key, 0, 1200)[0]
+                            key = start_time_generator(1, key, biasA, biasB)[0]
                         else:
                             data[key]["%s_%s" % (agent_id, num)] = route
                             break
