@@ -94,6 +94,7 @@ def run_simulation(network_file, simdata):
     
 if __name__ == "__main__":
     if len(sys.argv) > 2:
+        print("Network: %s" % sys.argv[1])
         run_simulation(sys.argv[1], sys.argv[2])
     else:
         try:

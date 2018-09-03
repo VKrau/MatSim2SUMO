@@ -67,7 +67,6 @@ public class AgentsStat {
         ArrayList<String> strArray = new ArrayList<>();
         strArray.add(String.valueOf(currentLink));
 
-
         ReportTable.put(strVehicleID, (int) Math.round(Time), strArray);
     }
 
